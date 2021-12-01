@@ -1,12 +1,11 @@
 const  Player = require('../lib/Player');
 // The require() line imports the Potion() constructor establishing Potion as a usable variable (otherwise new Potion() would throw an error
 const Potion = require('../lib/Potion');
-
 jest.mock('../lib/Potion');
-
 console.log(new Potion());
  
-test('creates a player objects', () => {
+// Create Player Obj
+test('creates a player object', () => {
   const player  = new Player('Dave');
 
   expect(player.name).toBe('Dave');
@@ -51,6 +50,19 @@ test("gets player's health value", () => {
 });
 
 
+//test for reduceHealth
+test("subtracts from player's health", () => {
+  const player = new Player('Dave');
+  const oldHealth = player.health;
+  
+  player.reduceHealth(5);
+  expect(player.health).toBe(oldHealth - 5);
+  
+  player.reduceHealth(99999);
+  expect(player.health).toBe(0);
+  });
+
+  
 //test for isAlive
 test('checks if player is alive or not', () => {
   const player = new Player('Dave');
@@ -60,19 +72,6 @@ test('checks if player is alive or not', () => {
   player.health = 0;
 
   expect(player.isAlive()).toBeFalsy();
-});
-
-
-//test for reduceHealth
-test("subtracts from player's health", () => {
-const player = new Player('Dave');
-const oldHealth = player.health;
-
-player.reduceHealth(5);
-expect(player.health).toBe(oldHealth - 5);
-
-player.reduceHealth(99999);
-expect(player.health).toBe(0);
 });
 
 
