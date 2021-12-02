@@ -23,5 +23,8 @@
   "homepage": "https://github.com/MellieDee/jest-another-RPG#readme",
   "devDependencies": {
     "jest": "^27.4.0"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
   }
 }
